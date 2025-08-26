@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 import 'screens/onboarding_screen.dart';
 import 'screens/home_screen.dart';
-import 'screens/lesson_screen.dart';
-import 'screens/session_screen.dart';
+import 'screens/tracker_screen.dart';
+import 'screens/tree_screen.dart';
 import 'screens/profile_screen.dart';
-import 'screens/leaderboard_screen.dart';
+import 'screens/community_screen.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -14,14 +14,14 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case '/home':
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-      case '/lesson':
-        return MaterialPageRoute(builder: (_) => const LessonScreen());
-      case '/session':
-        return MaterialPageRoute(builder: (_) => const SessionScreen());
+      case '/track':
+        return MaterialPageRoute(builder: (_) => const TrackerScreen());
+      case '/tree':
+        return MaterialPageRoute(builder: (_) => const TreeScreen());
       case '/profile':
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
-      case '/leaderboard':
-        return MaterialPageRoute(builder: (_) => const LeaderboardScreen());
+      case '/community':
+        return MaterialPageRoute(builder: (_) => const CommunityScreen());
       default:
         return MaterialPageRoute(
           builder: (_) =>

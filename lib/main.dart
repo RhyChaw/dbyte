@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'screens/onboarding_screen.dart';
 import 'screens/home_screen.dart';
-import 'screens/lesson_screen.dart';
-import 'screens/session_screen.dart';
+import 'screens/tracker_screen.dart';
+import 'screens/tree_screen.dart';
 import 'screens/profile_screen.dart';
-import 'screens/leaderboard_screen.dart';
+import 'screens/community_screen.dart';
 
 void main() {
   runApp(DbyTeApp());
@@ -20,10 +20,10 @@ class DbyTeApp extends StatelessWidget {
       routes: {
         '/onboarding': (context) => OnboardingScreen(),
         '/home': (context) => MainScaffold(),
-        '/lesson': (context) => LessonScreen(),
-        '/session': (context) => SessionScreen(),
+        '/lesson': (context) => TrackerScreen(),
+        '/tree': (context) => TreeScreen(),
         '/profile': (context) => ProfileScreen(),
-        '/leaderboard': (context) => LeaderboardScreen(),
+        '/community': (context) => CommunityScreen(),
       },
     );
   }
@@ -49,17 +49,17 @@ class _MainScaffoldState extends State<MainScaffold> {
 
   final List<Widget> _screens = [
     HomeScreen(),
-    LessonScreen(),
-    SessionScreen(),
-    LeaderboardScreen(),
+    TrackerScreen(),
+    TreeScreen(),
+    CommunityScreen(),
     ProfileScreen(),
   ];
 
   final List<String> _titles = [
     "Home",
-    "Lessons",
-    "Session",
-    "Leaderboard",
+    "Track",
+    "Tree",
+    "Community",
     "Profile",
   ];
 
@@ -80,11 +80,17 @@ class _MainScaffoldState extends State<MainScaffold> {
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Lessons'),
-          BottomNavigationBarItem(icon: Icon(Icons.school), label: 'Session'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.leaderboard),
-            label: 'Leaderboard',
+            icon: Icon(Icons.track_changes),
+            label: 'Track',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.energy_savings_leaf),
+            label: 'My Tree',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.escalator_warning),
+            label: 'Community',
           ),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
