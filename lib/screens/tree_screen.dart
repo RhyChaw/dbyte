@@ -153,8 +153,7 @@ class _TreeScreenState extends State<TreeScreen> with TickerProviderStateMixin {
                           child: Opacity(
                             opacity: 0.9,
                             child: const Icon(
-                              Icons
-                                  .airline_seat_recline_normal, // bird-like silhouette
+                              Icons.airplane_ticket, // bird-like silhouette
                               size: 28,
                               color: Colors.white,
                             ),

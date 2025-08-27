@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'settings_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -9,7 +10,9 @@ class ProfileScreen extends StatelessWidget {
       backgroundColor: Colors.purple[50],
       appBar: AppBar(backgroundColor: Colors.purple),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Top box with image
             Container(
@@ -37,35 +40,65 @@ class ProfileScreen extends StatelessWidget {
             const Text(
               "Rhythm Chawla",
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 26,
                 fontWeight: FontWeight.bold,
                 color: Colors.purple,
               ),
             ),
 
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
 
-            // Details
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                ListTile(
-                  leading: Icon(Icons.email, color: Colors.purple),
-                  title: Text("rhythm@email.com"),
-                ),
-                ListTile(
-                  leading: Icon(Icons.phone, color: Colors.purple),
-                  title: Text("+1 437-667-5557"),
-                ),
-                ListTile(
-                  leading: Icon(Icons.person, color: Colors.purple),
-                  title: Text("Gender: Male"),
-                ),
-                ListTile(
-                  leading: Icon(Icons.shield, color: Colors.purple),
-                  title: Text("Role: Warrior"),
-                ),
+            // 2x2 Flex cards for details
+            GridView.count(
+              crossAxisCount: 2,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              children: [
+                _buildInfoCard(Icons.email, 'Email', 'rhythm@email.com'),
+                _buildInfoCard(Icons.phone, 'Phone', '+1 437-667-5557'),
+                _buildInfoCard(Icons.person, 'Gender', 'Male'),
+                _buildInfoCard(Icons.shield, 'Role', 'Warrior'),
               ],
+            ),
+
+            const SizedBox(height: 20),
+
+            // Tree Size Section
+            Card(
+              color: Colors.purple.shade100,
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: ListTile(
+                leading: const Icon(Icons.park, color: Colors.purple),
+                title: const Text(
+                  'Tree Size',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                subtitle: const Text('Your progress in tree growth'),
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            // Leaderboard Section
+            Card(
+              color: Colors.purple.shade100,
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: ListTile(
+                leading: const Icon(Icons.leaderboard, color: Colors.purple),
+                title: const Text(
+                  'Leaderboard',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                subtitle: const Text('See your rank among others'),
+              ),
             ),
 
             const SizedBox(height: 20),
@@ -97,100 +130,34 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
-}
 
-/// SETTINGS SCREEN
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
-
-  Widget _buildSectionTitle(String title) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16),
-      child: Text(
-        title,
-        style: const TextStyle(
-          color: Colors.purpleAccent,
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTile(String text, IconData icon) {
-    return ListTile(
-      leading: Icon(icon, color: Colors.purpleAccent),
-      title: Text(text, style: const TextStyle(color: Colors.white)),
-      trailing: const Icon(
-        Icons.arrow_forward_ios,
-        size: 16,
-        color: Colors.white70,
-      ),
-      onTap: () {}, // TODO: implement actions
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: const Text("Settings"),
-        backgroundColor: Colors.black,
-        foregroundColor: Colors.purpleAccent,
-      ),
-      body: ListView(
-        children: [
-          _buildSectionTitle("Preferences"),
-          _buildTile("Profile", Icons.person),
-          _buildTile("Notifications", Icons.notifications),
-          _buildTile("Courses", Icons.book),
-          _buildTile("Social accounts", Icons.people),
-          _buildTile("Privacy settings", Icons.lock),
-
-          _buildSectionTitle("Support"),
-          _buildTile("Help center", Icons.help),
-          _buildTile("Feedback", Icons.feedback),
-
-          const Divider(color: Colors.purpleAccent),
-
-          // Sign out
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.purpleAccent,
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
+  Widget _buildInfoCard(IconData icon, String title, String value) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      elevation: 5,
+      color: Colors.purple.shade100,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, color: Colors.purple, size: 36),
+            const SizedBox(height: 12),
+            Text(
+              title,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.purple,
               ),
-              onPressed: () {},
-              child: const Text("Sign Out", style: TextStyle(fontSize: 16)),
             ),
-          ),
-
-          const Divider(color: Colors.purpleAccent),
-
-          // Footer
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              children: const [
-                Text(
-                  "Terms of Service",
-                  style: TextStyle(color: Colors.white70, fontSize: 14),
-                ),
-                SizedBox(height: 6),
-                Text(
-                  "Privacy Policy",
-                  style: TextStyle(color: Colors.white70, fontSize: 14),
-                ),
-              ],
+            const SizedBox(height: 6),
+            Text(
+              value,
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Colors.black),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
