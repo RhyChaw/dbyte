@@ -5,6 +5,7 @@ import 'screens/tracker_screen.dart';
 import 'screens/tree_screen.dart';
 import 'screens/profile_screen.dart';
 import 'screens/community_screen.dart';
+import 'partner/partner_main_scaffold.dart';
 
 void main() {
   runApp(DbyTeApp());
@@ -20,6 +21,7 @@ class DbyTeApp extends StatelessWidget {
       routes: {
         '/onboarding': (context) => OnboardingScreen(),
         '/home': (context) => MainScaffold(),
+        '/partner': (context) => const PartnerMainScaffold(),
         '/lesson': (context) => TrackerScreen(),
         '/tree': (context) => TreeScreen(),
         '/profile': (context) => ProfileScreen(),
