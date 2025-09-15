@@ -53,34 +53,35 @@ class PartnerDashboardScreen extends StatelessWidget {
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
           ),
           const SizedBox(height: 12),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Column(
             children: [
-              Expanded(
-                child: AnimatedButton(
-                  text: 'Encourage',
-                  icon: Icons.thumb_up,
-                  backgroundColor: Colors.purple,
-                  onPressed: () {},
-                ),
+              Row(
+                children: [
+                  Expanded(
+                    child: AnimatedButton(
+                      text: 'Encourage',
+                      icon: Icons.thumb_up,
+                      backgroundColor: Colors.purple,
+                      onPressed: () {},
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: AnimatedButton(
+                      text: 'Check-in',
+                      icon: Icons.favorite,
+                      backgroundColor: Colors.indigo,
+                      onPressed: () {},
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: AnimatedButton(
-                  text: 'Check-in',
-                  icon: Icons.favorite,
-                  backgroundColor: Colors.indigo,
-                  onPressed: () {},
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: AnimatedButton(
-                  text: 'Suggest',
-                  icon: Icons.lightbulb,
-                  backgroundColor: Colors.teal,
-                  onPressed: () {},
-                ),
+              const SizedBox(height: 8),
+              AnimatedButton(
+                text: 'Suggest a skill/exercise',
+                icon: Icons.lightbulb,
+                backgroundColor: Colors.teal,
+                onPressed: () {},
               ),
             ],
           ),

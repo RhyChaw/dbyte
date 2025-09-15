@@ -521,35 +521,4 @@ class _ProfileScreenState extends State<ProfileScreen>
         return Colors.purple;
     }
   }
-
-  Widget _buildInfoCard(IconData icon, String title, String value) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      elevation: 5,
-      color: Colors.purple.shade100,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, color: Colors.purple, size: 36),
-            const SizedBox(height: 12),
-            Text(
-              title,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.purple,
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              value,
-              textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.black),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }

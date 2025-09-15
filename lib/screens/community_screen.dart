@@ -21,7 +21,6 @@ class _CommunityScreenState extends State<CommunityScreen>
   late Animation<double> _sidebarWidth;
   late Animation<double> _contentFadeAnimation;
   late Animation<Offset> _contentSlideAnimation;
-  late Animation<double> _cardScaleAnimation;
 
   final List<String> _menuItems = [
     'See Feed',
@@ -81,10 +80,6 @@ class _CommunityScreenState extends State<CommunityScreen>
         Tween<Offset>(begin: const Offset(0.3, 0.0), end: Offset.zero).animate(
           CurvedAnimation(parent: _contentController, curve: Curves.easeOut),
         );
-
-    _cardScaleAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
-      CurvedAnimation(parent: _cardController, curve: Curves.elasticOut),
-    );
 
     // Start initial animations
     _contentController.forward();
